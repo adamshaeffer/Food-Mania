@@ -42,7 +42,8 @@ var apple1, banana1, grape1, pear1, orange;//Game3
 
 
 var food1X, food1Y, food2X, food2Y,food3X, food3Y, food4X,food4Y, food5X, food5Y;//Game4
-let xCoor, yCoor;
+let xCoor, xText;
+let bananaText, appleText, orangeText, grapeText, pearText;
 let value;
 let check = false;
 let box1, box2, box3, box4;
@@ -579,6 +580,21 @@ function game1() { //All code for the Build-A-Burger game
   if(mouseX<=100 && mouseY<=50){
     sel=1;
     cursor(HAND);
+  } else if((mouseX>100 && mouseX<300) && (mouseY>300 && mouseY<400) && burgerMenu) { //Start game button
+    sel=2;
+    cursor(HAND);
+  } else if((mouseY>200 && mouseY<285) && (mouseX>50 && mouseX<140) && burgerMenu) {
+    sel=3;
+    cursor(HAND);
+  } else if((mouseY>200 && mouseY<285) && (mouseX>155 && mouseX<245) && burgerMenu) {
+    sel=4;
+    cursor(HAND);
+  } else if((mouseY>200 && mouseY<285) && (mouseX>260 && mouseX<350) && burgerMenu) {
+    sel=5;
+    cursor(HAND);
+  } else if((mouseX>xstop-(15*1.4) && mouseX<xstop+30+(15*1.4)) && (mouseY>ystop && mouseY<ystop+30+(30*1.4)) && !burgerMenu) {
+    sel=2;
+    cursor(HAND);
   } else {
     sel=0;
     cursor(ARROW);
@@ -597,22 +613,22 @@ function game1() { //All code for the Build-A-Burger game
 
 
   if(burgerMenu) {
-    fill(200);
+    makeLerp(200,200,200,3);
     if(difSel==0) {
-      fill(100);
+      fillLerp(100,3);
     }
     rect(50,250,90,35);
-    fill(200);
+    makeLerp(200,200,200,4);
     if(difSel==1) {
-      fill(100);
+      fillLerp(100,4);
     }
     rect(155,250,90,35);
-    fill(200);
+    makeLerp(200,200,200,5);
     if(difSel==2) {
-      fill(100);
+      fillLerp(100,5);
     }
     rect(260,250,90,35);
-    fill(255,157,0);
+    makeLerp(255,157,0,2);
     rect(100,300,200,80);
 
     stroke(0);
@@ -783,8 +799,8 @@ function game1() { //All code for the Build-A-Burger game
   }
 
   if(topping<7) {
-    fill(209,0,14);//Draws the stop button
-    stroke(255);
+    makeLerp(209,0,14,2);//Draws the stop button
+    strokeLerp(255,255,255,2);
     strokeWeight(3);
     beginShape();
     vertex(xstop,ystop);
@@ -798,7 +814,7 @@ function game1() { //All code for the Build-A-Burger game
     vertex(xstop,ystop);
     endShape();
   
-    fill(255);//Prints STOP on the stop button
+    fillLerp(255,2);//Prints STOP on the stop button
     strokeWeight(1);
     textFont('Helvetica');
     text("STOP",xstop+15,ystop+42);
@@ -1215,7 +1231,7 @@ function game3() { //All code for the Number Buckets game
   strokeJoin(ROUND);
   strokeWeight(0);
 
-  background(110,192,255);
+  background(128, 150, 300);
   
   if(mouseX<=100 && mouseY<=50){
     sel=1;
@@ -1257,6 +1273,18 @@ function game3() { //All code for the Number Buckets game
   image(Pear2,60,300,50,50);
   shoppingcart.resize(150,165);
   image(shoppingcart,180,165); 
+
+  strokeWeight(5);
+  stroke("yellow");
+  strokeWeight(5);
+  fill("rgba(0,255,130,0.24)");
+  rect(30,360,100,30,5,5,5,5);
+  fill("rgba(255,0,231,0.88)");
+  textSize(15);
+  textFont(fontTango);
+  strokeWeight(0);
+  text("Level 1",54,366,60,20);
+  textSize(20);
 
   if ((banana2X > 200) && (banana2X < 250)) {
     if ((banana2Y > 185) && (banana2Y < 250)) {
@@ -1320,8 +1348,9 @@ function game3() { //All code for the Number Buckets game
   strokeWeight(0);
     fill("black");
     text("Congrats! Press me to move to the next level",150,185,130,120);
-    
 
+     
+    
   }
  
 }
@@ -1339,7 +1368,7 @@ function game3lvl2() {
   strokeJoin(ROUND);
   strokeWeight(0);
 
-  background(110,192,255);
+  background(128, 150, 300);
   
   if(mouseX<=100 && mouseY<=50){
     sel=1;
@@ -1382,6 +1411,18 @@ function game3lvl2() {
   image(Pear2,60,300,50,50);
   shoppingcart.resize(150,165);
   image(shoppingcart,180,165); 
+
+  strokeWeight(5);
+  stroke("purple");
+  strokeWeight(5);
+  fill("rgba(0,255,130,0.24)");
+  rect(30,360,100,30,5,5,5,5);
+  fill("rgba(255,0,231,0.88)");
+  textSize(15);
+  textFont(fontTango);
+  strokeWeight(0);
+  text("Level 2",54,366,60,20);
+  textSize(20);
 
   if ((banana2X > 200) && (banana2X < 250)) {
     if ((banana2Y > 185) && (banana2Y < 250)) {
@@ -1445,6 +1486,8 @@ function game3lvl2() {
     strokeWeight(0);
       fill("black");
       text("Congrats! You have completed all the level",150,185,130,120);
+
+  
   }
 }
 
@@ -1492,6 +1535,17 @@ function game4() { //All code for the Pattern Match game
   fill(0);
   text("Go Back",52,32);
 
+  strokeWeight(5);
+  stroke("yellow");
+  strokeWeight(5);
+  fill("rgba(0,255,130,0.24)");
+  rect(290,10,100,30,5,5,5,5);
+  fill("rgba(255,0,231,0.88)");
+  textSize(15);
+  textFont(fontTango);
+  strokeWeight(0);
+  text("Level 1",310,15,60,20);
+  
   textFont(fontTango);
   fill(400);
   stroke('green');
@@ -1504,10 +1558,10 @@ strokeWeight(4);
   fill(0);
   
     textSize(15);
-  text("Banana", 25, 280,100);
-  text("Apple", 110, 280,100);
-  text("Grape", 195, 280,100);
-  text("Pear", 290, 280,100);
+  text("Banana", bananaText, 280,100);
+  text("Apple", appleText, 280,100);
+  text("Grape", grapeText, 280,100);
+  text("Pear", pearText, 280,100);
   
   textSize(24); 
   strokeLerp(255,255,255,2);
@@ -1523,8 +1577,8 @@ strokeWeight(0);
   text("Drag the fruit to the matching box",25,200,375);
   
   image(bananaPic,food1X, food1Y, 75, 75);
-  image(applePic, food2X, food2Y, 80, 80);
-  image(Grape2, food3X, food3Y, 80, 80);
+  image(applePic, food2X, food2Y, 70, 70);
+  image(Grape2, food3X, food3Y, 75, 75);
   image(Pear2, food4X, food4Y, 80, 80);
   if(box1 == true) {
 
@@ -1540,26 +1594,26 @@ strokeWeight(0);
   }
 
   if (check == true){//Checks if the first box is correct
-    if ((food1X > 15) && (food1X < 45)) {
+    if ((food1X > bananaText) && (food1X < bananaText + 80)) {
       if ((food1Y > 230) && (food1Y < 270)) {
         value++;
         box1=true;
       }
     }
-  if ((food2X > 100) && (food2X < 140)) {
+  if ((food2X > appleText) && (food2X < appleText + 80)) {
     if ((food2Y > 230) && (food2Y < 270)) {
         
       value++;
       box2=true;
     }
   }
-  if ((food3X > 195) && (food3X < 230)) {
+  if ((food3X > grapeText) && (food3X < grapeText + 80)) {
     if ((food3Y > 230) && (food3Y < 270)) {
       value++;
       box3 = true;
     }
   }
-  if ((food4X > 285) && (food4X < 320)) {
+  if ((food4X > pearText) && (food4X < pearText + 80)) {
     if ((food4Y > 230) && (food4Y < 270)) {
         value++;
         box4 = true;
@@ -1569,9 +1623,9 @@ strokeWeight(0);
 }
 if(value == 4){//to check if all the boxes are correct
   confetti();
-  fill('black');
   strokeWeight(4);
   strokeLerp(255,255,255,2);
+  fill('black');
 ellipse(200, 200, 200,200);
 makeLerp(255,255,255,3);
 textSize(20);
@@ -1580,12 +1634,10 @@ fill('green');
   nextLevel2 = true;
 }
 if((value < 4) && (value > 0)){//checks how many are correct
-  confetti();
-  fill('black');
   strokeWeight(4);
   strokeLerp(255,255,255,2);
+  fill('black');
 ellipse(200, 200, 200,200);
-makeLerp(255,255,255,3);
 textSize(20);
 fill('green');
 text("Nice try, You got " + value + "/4 correct. Click anywhere in the circle to restart", 137, 150, 120,120);
@@ -1602,7 +1654,6 @@ function game4Lvl2(){
   ellipseMode(CENTER);
   rectMode(CORNER);
   strokeCap(ROUND);
-  smooth();
   strokeJoin(ROUND);
   strokeWeight(0);
   
@@ -1634,22 +1685,35 @@ function game4Lvl2(){
   fill(0);
   text("Go Back",52,32);
 
+  strokeWeight(5);
+  stroke("yellow");
+  strokeWeight(5);
+  fill("rgba(0,255,130,0.24)");
+  rect(290,10,100,30,5,5,5,5);
+  fill("rgba(255,0,231,0.88)");
+  textSize(15);
+  textFont(fontTango);
+  strokeWeight(0);
+  text("Level 2",310,15,60,20);
+  
   textFont(fontTango);
   fill(400);
   stroke('green');
 strokeWeight(4);
-  rect( 210, 240, 80, 80);
-  rect( 120, 240, 80, 80);
-  rect( 30, 240, 80, 80);
-  rect( 300, 240, 80, 80);
+  rect( 165, 240, 70, 70);
+  rect( 85, 240, 70, 70);
+  rect( 5, 240, 70, 70);
+  rect( 245, 240, 70, 70);
+  rect(325 , 240, 70, 70)
   strokeWeight(0);
   
   fill('green');
   textSize(14);
-  text("Orange", 25, 280,100);
-  text("Pear", 110, 280,100);
-  text("Apple", 195, 280,100);
-  text("Banana", 290, 280,100); 
+  text("Orange", orangeText , 280,100);
+  text("Pear", pearText, 280,100);
+  text("Apple", appleText, 280,100);
+  text("Banana", bananaText, 280,100); 
+  text("Grape", grapeText, 280, 100);
 
   textSize(24); 
   strokeLerp(255,255,255,2);
@@ -1659,45 +1723,52 @@ strokeWeight(4);
   fill('green');
   text("Check", 180, 350, 30, 30);
 
+  noStroke();
   fill("red");
   
   text("Drag the fruit to the matching box",25,200,375);
   
-  image(bananaPic,food1X, food1Y, 70, 70);
-  image(applePic, food2X, food2Y, 70, 70);
-  image(Grape2, food3X, food3Y, 70, 70);
-  image(Pear2, food4X, food4Y, 70, 70);
-  image(orange, food5X, food5Y, 70, 70)
+  image(bananaPic,food1X, food1Y, 60, 60);
+  image(applePic, food2X, food2Y, 55, 55);
+  image(Grape2, food3X, food3Y, 60, 60);
+  image(Pear2, food4X, food4Y, 65, 65);
+  image(orange, food5X, food5Y, 60, 60)
   
   if (check == true){//Checks if the first box is correct
-    if ((food5X > 15) && (food5X < 45)) {
-      if ((food5Y > 230) && (food5Y < 270)) {
+    if ((food1X > bananaText) && (food1X < bananaText + 70)) {
+      if ((food1Y > 230) && (food1Y < 270)) {
         value++;
         box1=true;
       }
     }
-  if ((food4X > 100) && (food4X < 140)) {
-    if ((food4Y > 230) && (food4Y < 270)) {
+  if ((food2X > appleText) && (food2X < appleText + 70)) {
+    if ((food2Y > 230) && (food2Y < 270)) {
         
       value++;
       box2=true;
     }
   }
-  if ((food2X > 195) && (food2X < 230)) {
-    if ((food2Y > 230) && (food2Y < 270)) {
+  if ((food3X > grapeText) && (food3X < grapeText + 70)) {
+    if ((food3Y > 230) && (food3Y < 270)) {
       value++;
       box3 = true;
     }
   }
-  if ((food1X > 285) && (food1X < 320)) {
-    if ((food1Y > 230) && (food1Y < 270)) {
+  if ((food4X > pearText) && (food4X < pearText + 70)) {
+    if ((food4Y > 230) && (food4Y < 270)) {
         value++;
         box4 = true;
     }
   }
+    if ((food5X > orangeText) && (food5X < orangeText + 70)){
+      if((food5Y > 230) && (food5Y < 270)){
+         value++;
+      }
+    }
+  
   check=false;
 }
-if(value == 4){//to check if all the boxes are correct
+if(value == 5){//to check if all the boxes are correct
   confetti();
   fill('black');
   strokeWeight(4);
@@ -1709,12 +1780,15 @@ fill('green');
   text("Congrats! Click to move on to level 3! You're going to need to memorize the boxes this time!", 136, 125, 125, 170);
   nextLevel2 = true;
 }
-if((value < 4) && (value > 0)){//checks how many are correct
-fill('black');
-ellipse(200, 200, 200, 200);
+if((value < 5) && (value > 0)){//checks how many are correct
+  fill('black');
+  strokeWeight(4);
+  strokeLerp(255,255,255,2);
+ellipse(200, 200, 200,200);
 makeLerp(255,255,255,3);
 textSize(20);
-text("Nice try, You got " + value + "/4 correct. Click anywhere in the circle to restart", 137, 150, 120,120);
+fill('green');
+text("Nice try, You got " + value + "/5 correct. Click anywhere in the circle to restart", 137, 150, 120,120);
 }
 
 }
@@ -1747,6 +1821,17 @@ function game4Lvl3(){
     cursor(ARROW);
   }
 
+  strokeWeight(5);
+  stroke("yellow");
+  strokeWeight(5);
+  fill("rgba(0,255,130,0.24)");
+  rect(290,10,100,30,5,5,5,5);
+  fill("rgba(255,0,231,0.88)");
+  textSize(15);
+  textFont(fontTango);
+  strokeWeight(0);
+  text("Level 3",310,15,60,20);
+
   stroke(0);
   makeLerp(255,0,0,1);
   triangle(1,25,25,1,25,50);
@@ -1767,10 +1852,11 @@ function game4Lvl3(){
     fill(400);
     stroke('green');
   strokeWeight(4);
-    rect( 210, 240, 80, 80);
-    rect( 120, 240, 80, 80);
-    rect( 30, 240, 80, 80);
-    rect( 300, 240, 80, 80);
+  rect( 165, 240, 70, 70);
+  rect( 85, 240, 70, 70);
+  rect( 5, 240, 70, 70);
+  rect( 245, 240, 70, 70);
+  rect(325 , 240, 70, 70)
     strokeWeight(0);
     
     textSize(24); 
@@ -1781,13 +1867,14 @@ function game4Lvl3(){
   fill('green');
   text("Check", 180, 350, 30, 30);
   
-  
+  noStroke();
   textSize(14);
   if(timer > 0){
-  text("Orange", 25, 280,100);
-  text("Pear", 110, 280,100);
-  text("Apple", 195, 280,100);
-  text("Banana", 290, 280,100); 
+  text("Orange", orangeText, 280,100);
+  text("Pear", pearText, 280,100);
+  text("Apple", appleText, 280,100);
+  text("Banana", bananaText, 280,100); 
+  text("Grape", grapeText, 280, 100)
   textSize(24);
   fill("red");
   textFont(fontTango);
@@ -1798,60 +1885,73 @@ function game4Lvl3(){
   fill("red");
   
   if(timer == 0){
+    textSize(24);
   text("Drag the fruit to the matching box",25,200,375);
   }
   text(timer, 200, 185);
   
   
-  image(bananaPic,food1X, food1Y, 70, 70);
-  image(applePic, food2X, food2Y, 70, 70);
-  image(Grape2, food3X, food3Y, 70, 70);
-  image(Pear2, food4X, food4Y, 70, 70);
-  image(orange, food5X, food5Y, 70, 70)
+  image(bananaPic,food1X, food1Y, 60, 60);
+  image(applePic, food2X, food2Y, 55, 55);
+  image(Grape2, food3X, food3Y, 60, 60);
+  image(Pear2, food4X, food4Y, 65, 65);
+  image(orange, food5X, food5Y, 60, 60)
   
   if (check == true){//Checks if the first box is correct
-    if ((food5X > 15) && (food5X < 45)) {
-      if ((food5Y > 230) && (food5Y < 270)) {
+    if ((food1X > bananaText) && (food1X < bananaText + 70)) {
+      if ((food1Y > 230) && (food1Y < 270)) {
         value++;
         box1=true;
       }
     }
-  if ((food4X > 100) && (food4X < 140)) {
-    if ((food4Y > 230) && (food4Y < 270)) {
+  if ((food2X > appleText) && (food2X < appleText + 70)) {
+    if ((food2Y > 230) && (food2Y < 270)) {
         
       value++;
       box2=true;
     }
   }
-  if ((food2X > 195) && (food2X < 230)) {
-    if ((food2Y > 230) && (food2Y < 270)) {
+  if ((food3X > grapeText) && (food3X < grapeText + 70)) {
+    if ((food3Y > 230) && (food3Y < 270)) {
       value++;
       box3 = true;
     }
   }
-  if ((food1X > 285) && (food1X < 320)) {
-    if ((food1Y > 230) && (food1Y < 270)) {
+  if ((food4X > pearText) && (food4X < pearText + 70)) {
+    if ((food4Y > 230) && (food4Y < 270)) {
         value++;
         box4 = true;
     }
   }
+    if ((food5X > orangeText) && (food5X < orangeText + 70)){
+      if((food5Y > 230) && (food5Y < 270)){
+         value++;
+      }
+    }
   check=false;
 }
-if(value == 4){//to check if all the boxes are correct
+if(value == 5){//to check if all the boxes are correct
   confetti();
   fill('black');
+  strokeWeight(4);
+  strokeLerp(255,255,255,2);
 ellipse(200, 200, 200,200);
 makeLerp(255,255,255,3);
 textSize(20);
-  text("Congrats, you completed all the level! Click to go back to menu and play the other games!", 137, 150, 120, 120);
+fill('green');
+  text("Congrats, you completed all the level! Click to go back to menu and play the other games!", 137, 140, 120, 120);
   nextLevel2 = true;
 }
-if((value < 4) && (value > 0)){//checks how many are correct
-fill('black');
-ellipse(200, 200, 200, 200);
+if((value < 5) && (value > 0)){//checks how many are correct
+  
+  fill('black');
+  strokeWeight(4);
+  strokeLerp(255,255,255,2);
+ellipse(200, 200, 200,200);
 makeLerp(255,255,255,3);
 textSize(20);
-text("Nice try, You got " + value + "/4 correct. Click anywhere in the circle to restart", 137, 150, 120,120);
+fill('green');
+text("Nice try, You got " + value + "/5 correct. Click anywhere in the circle to restart", 137, 150, 120,120);
 }
 }
 
@@ -1909,6 +2009,7 @@ function toGame2Lvl3() {
 
 function toGame3() {
   game = 3;
+  start = true;
   apple2X = 60;
   apple2Y = 90;
   banana2X = 60;
@@ -1935,6 +2036,7 @@ function toGame3() {
 
 function toGame3lvl2(){
   game = 8;
+  start = true;
   apple2X = 60;
   apple2Y = 90;
   banana2X = 60;
@@ -1981,6 +2083,14 @@ xCoor = [20, 140, 220,300];
   food3Y = 50;
   food4X = random(xCoor);
   food4Y = 50;
+  xText = [25, 110, 195, 290];
+  bananaText = random(xText);
+  xText.splice(xText.indexOf(bananaText), 1);
+  appleText = random(xText);
+  xText.splice(xText.indexOf(appleText), 1);
+  grapeText = random(xText);
+  xText.splice(xText.indexOf(grapeText), 1);
+  pearText = random(xText);
   check = false;
   box1=false;
   box2=false;
@@ -2009,6 +2119,16 @@ function toGame4Lvl2(){
   food4Y = 50;
   food5X = random(xCoor);
   food5Y = 50;
+  xText = [0, 70, 155, 230, 310];
+  bananaText = random(xText);
+  xText.splice(xText.indexOf(bananaText), 1);
+  appleText = random(xText);
+  xText.splice(xText.indexOf(appleText), 1);
+  grapeText = random(xText);
+  xText.splice(xText.indexOf(grapeText), 1);
+  pearText = random(xText);
+  xText.splice(xText.indexOf(pearText), 1);
+  orangeText = random(xText);
   value = 0;
   check = false;
   box1=false;
@@ -2036,6 +2156,16 @@ xCoor.splice(xCoor.indexOf(food4X),1)
 food4Y = 50;
 food5X = random(xCoor);
 food5Y = 50;
+xText = [0, 70, 155, 230, 310];
+  bananaText = random(xText);
+  xText.splice(xText.indexOf(bananaText), 1);
+  appleText = random(xText);
+  xText.splice(xText.indexOf(appleText), 1);
+  grapeText = random(xText);
+  xText.splice(xText.indexOf(grapeText), 1);
+  pearText = random(xText);
+  xText.splice(xText.indexOf(pearText), 1);
+  orangeText = random(xText);
 value = 0;
 check = false;
 box1=false;
@@ -2053,7 +2183,7 @@ function toMenu() {
 function preload() {
   foodBG = loadImage('images/burgerBg.png');
   applePic = loadImage('images/IMG_7378.PNG');
-  bananaPic = loadImage('images/IMG_7377.PNG');
+  bananaPic = loadImage('images/IMG_7377.png');
   orangePic = loadImage('images/Orange.png');
   apple2 = loadImage("images/IMG_2245.PNG");
   banana2 = loadImage("images/Banana.png");
@@ -2250,10 +2380,10 @@ if (game == 7){
     check = true;
     value = 0;
   }
-  if((value == 4) && (mouseX > 100 && mouseX < 300) && (mouseY > 100 && mouseY < 300)){
+  if((value == 5) && (mouseX > 100 && mouseX < 300) && (mouseY > 100 && mouseY < 300)){
     toGame4Lvl3();
 }
-if((value > 0) && (value < 4) && (mouseX > 100 && mouseX < 300) && (mouseY > 100 && mouseY < 300)){
+if((value > 0) && (value < 5) && (mouseX > 100 && mouseX < 300) && (mouseY > 100 && mouseY < 300)){
   toGame4Lvl2();
 }
 }
@@ -2262,10 +2392,10 @@ if (game == 9){
     check = true;
     value = 0;
   }
-  if((value == 4) && (mouseX > 100 && mouseX < 300) && (mouseY > 100 && mouseY < 300)){
+  if((value == 5) && (mouseX > 100 && mouseX < 300) && (mouseY > 100 && mouseY < 300)){
     toMenu();
   }
-if((value > 0) && (value < 4) && (mouseX > 100 && mouseX < 300) && (mouseY > 100 && mouseY < 300)){
+if((value > 0) && (value < 5) && (mouseX > 100 && mouseX < 300) && (mouseY > 100 && mouseY < 300)){
   toGame4Lvl3();
 }
 }
