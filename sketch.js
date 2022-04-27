@@ -1052,11 +1052,8 @@ function game2Lvl2() {
       while (color2 == color1) {
         color2 = random(colors);
       }
-      while (color3 == color2) {
+      while (color3 == color2 || color3 == color1) {
         color3 = random(colors);
-      }
-      while (color3 == color1) {
-        color1 = random(colors);
       }
       randomNum = random([0, 1, 2]);
       needColor = false;
