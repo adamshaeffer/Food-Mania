@@ -2183,7 +2183,7 @@ function toMenu() {
 function preload() {
   foodBG = loadImage('images/burgerBg.png');
   applePic = loadImage('images/IMG_7378.PNG');
-  bananaPic = loadImage('images/IMG_7377.png');
+  bananaPic = loadImage('images/IMG_7377.PNG');
   orangePic = loadImage('images/Orange.png');
   apple2 = loadImage("images/IMG_2245.PNG");
   banana2 = loadImage("images/Banana.png");
